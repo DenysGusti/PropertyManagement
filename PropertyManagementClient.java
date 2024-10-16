@@ -54,9 +54,10 @@ public class PropertyManagementClient {
         } else if (args.length == 3) {
             int id = Integer.parseInt(args[2]);
             Apartment apartment = pm.getApartment(id);
-            if (apartment != null)
+            if (apartment != null) {
                 System.out.println(apartment);
-
+                System.out.println();
+            }
         } else throw new IllegalArgumentException("Error: Invalid parameter.");
     }
 
