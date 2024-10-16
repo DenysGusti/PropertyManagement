@@ -13,7 +13,7 @@ public class PropertyManagementSerializationDAO implements PropertyManagementDAO
     }
 
     private void loadFromFile() {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) {
+        try (var ois = new ObjectInputStream(new FileInputStream(filename))) {
             apartments = (List<Apartment>) ois.readObject();
         } catch (FileNotFoundException e) {
             apartments.clear();
@@ -25,7 +25,7 @@ public class PropertyManagementSerializationDAO implements PropertyManagementDAO
     }
 
     private void saveToFile() {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) {
+        try (var oos = new ObjectOutputStream(new FileOutputStream(filename))) {
             oos.writeObject(apartments);
         } catch (IOException e) {
             System.out.println("Serialization error: " + e.getMessage());

@@ -89,7 +89,7 @@ public abstract class Apartment implements Serializable {
     public abstract double getTotalCost();
 
     public static DecimalFormat getDecimalFormat() {
-        DecimalFormatSymbols dfs = DecimalFormatSymbols.getInstance();
+        var dfs = DecimalFormatSymbols.getInstance();
         dfs.setDecimalSeparator('.');
         return new DecimalFormat("0.00", dfs);
     }
