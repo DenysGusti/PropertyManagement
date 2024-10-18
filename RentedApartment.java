@@ -8,9 +8,9 @@ public class RentedApartment extends Apartment {
         super(id, area, rooms, floor, yearOfConstruction, postalCode, street, houseNumber, apartmentNumber);
 
         if (rentPerSquareMeter <= 0)
-            throw new IllegalArgumentException("Error: Rent must be positive.");
+            throw new IllegalArgumentException("Error: Invalid parameter.");
         if (numberOfTenants <= 0)
-            throw new IllegalArgumentException("Error: There must be at least one tenant.");
+            throw new IllegalArgumentException("Error: Invalid parameter.");
 
         this.rentPerSquareMeter = rentPerSquareMeter;
         this.numberOfTenants = numberOfTenants;

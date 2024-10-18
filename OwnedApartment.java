@@ -8,9 +8,9 @@ public class OwnedApartment extends Apartment {
         super(id, area, rooms, floor, yearOfConstruction, postalCode, street, houseNumber, apartmentNumber);
 
         if (operatingCostsPerSquareMeter < 0)
-            throw new IllegalArgumentException("Error: Operating costs must be non-negative.");
+            throw new IllegalArgumentException("Error: Invalid parameter.");
         if (reserveFundPerSquareMeter < 0)
-            throw new IllegalArgumentException("Error: Reserve fund must be non-negative.");
+            throw new IllegalArgumentException("Error: Invalid parameter.");
 
         this.operatingCostsPerSquareMeter = operatingCostsPerSquareMeter;
         this.reserveFundPerSquareMeter = reserveFundPerSquareMeter;
