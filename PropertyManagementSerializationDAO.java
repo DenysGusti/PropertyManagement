@@ -12,6 +12,7 @@ public class PropertyManagementSerializationDAO implements PropertyManagementDAO
         loadFromFile();
     }
 
+    @SuppressWarnings("unchecked")
     private void loadFromFile() {
         try (var ois = new ObjectInputStream(new FileInputStream(filename))) {
             apartments = (List<Apartment>) ois.readObject();

@@ -30,28 +30,24 @@ public class PropertyManagement {
         return dao.getApartments().size();
     }
 
-    public int countByType(Class<?> apartmentType) {
+    public int countByType(Class<? extends Apartment> apartmentType) {
         return (int) dao.getApartments().stream()
                 .filter(apartmentType::isInstance)
                 .count();
     }
 
     public double calculateMeanCosts() {
-        List<Apartment> apartments = dao.getApartments();
-        if (apartments.isEmpty())
-            return 0;
-
-        double totalCosts = apartments.stream()
+        return dao.getApartments().stream()
                 .mapToDouble(Apartment::getTotalCost)
-                .sum();
-        return totalCosts / apartments.size();
+                .average()
+                .orElse(0);
     }
 
     public List<Integer> findOldestApartments() {
         int maxAge = dao.getApartments().stream()
                 .mapToInt(Apartment::getAge)
                 .max()
-                .orElseThrow(() -> new IllegalArgumentException("No apartments found."));
+                .orElse(-1);
 
         return dao.getApartments().stream()
                 .filter(a -> a.getAge() == maxAge)
